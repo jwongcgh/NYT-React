@@ -21,9 +21,10 @@ var Results = React.createClass({
               <a href={article.web_url} target="_blank">
                 <button className="btn btn-default ">View Article</button>
               </a>
-              <a href="#">
+              <a href={"#" + index}>
                 {/* onClick will pass the current article as an argument to handleClick */}
                 <button
+                  id={"#" + index}
                   className="btn btn-default"
                   onClick={ function() { helpers.saveThisArticle({article}) }}>Save</button>
               </a>
