@@ -38,7 +38,7 @@ var helpers = {
       url: thisArticle.article.web_url
     };
 
-      return axios.post("/api/saved", body)
+      return axios.post("/api/save", body)
         .then(function(response) {
           console.log("post response from helpers: ", response)
           console.log("response data id: ", response.data._id)
@@ -46,6 +46,23 @@ var helpers = {
         });
   },
 
+  // retrieve saved articles from database
+      retrieveSaved: function() {
+        return axios.get("/api/saved")
+        .then(function(response) {
+              return response;
+      });
+    },
+
+    // remove selected saved articles from database
+    removeThisArticle: function(thisArticle) {
+      console.log("axios article_id: ", thisArticle.article._id);
+      return axios.delete("/api/delete/" + thisArticle.article._id)
+      .then(function(response) {
+        console.log("axios delete response: ", response)
+        return response;
+      });
+    }
 
 } // end helper
 

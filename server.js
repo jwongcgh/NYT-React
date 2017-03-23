@@ -41,7 +41,7 @@ db.once("open", function() {
 
 // routes
 // //save an article
-app.post('/api/saved', function(req, res) {
+app.post('/api/save', function(req, res) {
   let newArticle = new Article(req.body);
   console.log("req.query: ", req.body)
   newArticle.save(function(error, doc) {
@@ -53,7 +53,33 @@ app.post('/api/saved', function(req, res) {
   });
 });
 
+// show all saved articles
+app.get('/api/saved', function(req, res) {
+  Article.find({}).exec(function(error, doc) {
+      if (error) {
+        console.log(error);
+        res.end();
+      } else {
+        console.log(doc);
+        res.send(doc);
+      }
+    });
+});
 
+// remove a saved article
+app.delete('/api/delete/:id', function(req, res) {
+  var query = {};
+  query._id = req.params.id;
+
+  Article.findOneAndRemove(query).exec( function(error, doc) {
+    if (error) {
+      console.log(error);
+      res.end();
+    } else {
+      res.send(doc);
+    }
+  });
+});
 // ==========
 
 app.listen(PORT, function(err) {

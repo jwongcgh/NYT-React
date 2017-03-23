@@ -11,7 +11,6 @@ var Route = router.Route;
 var Router = router.Router;
 
 // Include the hashHistory prop to handle routing client side without a server
-// https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#hashhistory
 var hashHistory = router.hashHistory;
 
 // include the IndexRoute (catch=-all route)
@@ -34,7 +33,7 @@ module.exports = (
    <Router history = {hashHistory}>
      <Route path = "/" component={Main}>
 
-       {/* If user selects Info or Chat show the appropriate component */}
+       {/* If user selects Search or Saved show the appropriate component */}
        <Route path="Search" component={Search}>
          <Route path="Query" component={Query} />
          <Route path="Results" component={Results} />
