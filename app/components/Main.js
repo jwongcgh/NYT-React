@@ -6,9 +6,10 @@ var Main = React.createClass({
   render: function() {
     return (
       <div className="container">
-          <h1>this is Parent/Main</h1>
+        <h1>The New York Times</h1>
+        <h4>Article Scrubber</h4>
+        <h3>Search Articles</h3>
          <div className="nav-wrapper">
-           <a href="#" className="brand-logo">Some web elements here</a>
            <p>
              <a href="#/Search" className="btn btn-primary btn-lg">Search</a>
              <a href="#/Saved" className="btn btn-primary btn-lg">Saved Articles</a>

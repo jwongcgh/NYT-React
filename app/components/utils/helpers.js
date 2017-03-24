@@ -19,16 +19,12 @@ var helpers = {
     var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     let newArticle = {}
     return axios.get(queryURL, {params: params}).then(function(apiResponse){
-      // console.log("solamente api-results: ", apiResponse);
-      // console.log("solamente api-results: ", apiResponse.data.response);
       return apiResponse.data.response.docs;
-      // console.log("nav api-results to title: ", response.data.response.docs[0].headline.main)
     });
   }, // end runQuery
 
 
-  // Route to local api / to save new articles to our database, function called from Results.js handleclick(article)
-  // saveThisArticle: function(title, date, url) {
+  // Route to local api / to save new articles to our database, function called from Results.js buttton onClick
   saveThisArticle: function(thisArticle) {
     console.log("article is: ", thisArticle.article.headline.main);
     var body = {

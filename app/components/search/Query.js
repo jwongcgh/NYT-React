@@ -3,18 +3,14 @@ var React = require('react');
 var Query = React.createClass({
 
       getInitialState: function() {
-          return {topic: "ufo", startYear: "2012", endYear: "2012"}
+          return {topic: "eclipse", startYear: "2012", endYear: "2012"}
       },
 
       handleChange: function(event) {
 
           var newState = {};
           newState[event.target.id] = event.target.value;
-          // console.log(newState[event.target.id]);
-          // console.log(event.target.value);
           this.setState(newState);
-          console.log("from query: ", event.target.value);
-        
       },
 
       handleSubmit: function(event) {
@@ -26,7 +22,7 @@ var Query = React.createClass({
       render: function() {
           return (
               <div>
-                  <h2>this is query form</h2>
+                  <h3>Enter topic of interest, time interval, and submit to retrieve articles</h3>
                   {/* here goes the request form */}
                   <form onSubmit={this.handleSubmit}>
                       <div className="form-group">

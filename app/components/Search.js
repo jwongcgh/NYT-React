@@ -17,10 +17,8 @@ var Search = React.createClass({
   // this function will be passed to Query child to retrieve arguments/user-input
   // then using helpers, the actual api request will be executed
   searchQuery: function(topic, startYear, endYear) {
-    // console.log("from search: " + topic + startYear + endYear);
     helpers.runQuery(topic, startYear, endYear).then(function(apiResponse) {
       // updating the content/state of results with the data that returned from api query
-      // this.setState({results: {docs: data.docs}});
       this.setState({apiResponse: {arts: apiResponse}});
     }.bind(this));
   },
@@ -29,7 +27,7 @@ var Search = React.createClass({
 
     return (
       <div>
-        <h2>this is search component</h2>
+        <h2>Search Articles</h2>
 
         {/* pass searchQuery function to Query where arguments/user-input is fed to searchQuery function */}
           <Query searchQuery={this.searchQuery} />

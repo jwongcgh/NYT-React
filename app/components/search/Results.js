@@ -14,14 +14,13 @@ var Results = React.createClass({
 
    displayArticles: function() {
      return this.props.apiResults.arts.map( function(article, index) {
-       console.log(index, article.headline.main)
        return (
          <li key={index}>
               <p>{article.headline.main}</p>
               <a href={article.web_url} target="_blank">
                 <button className="btn btn-default ">View Article</button>
               </a>
-              <a href={"#" + index}>
+              <a href={void(0)}>
                 {/* onClick will pass the current article as an argument to handleClick */}
                 <button
                   id={"#" + index}
@@ -39,9 +38,9 @@ var Results = React.createClass({
 
        if (!this.props.apiResults.arts) {
       return (
-        <li>
-              <p>Fill fields above to initiate articles search</p>
-        </li>
+        <div>
+              <h3>No Articles to be Displayed</h3>
+        </div>
       );
     }
 

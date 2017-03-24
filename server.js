@@ -43,7 +43,6 @@ db.once("open", function() {
 // //save an article
 app.post('/api/save', function(req, res) {
   let newArticle = new Article(req.body);
-  console.log("req.query: ", req.body)
   newArticle.save(function(error, doc) {
     if (error) {
       res.send(error);
