@@ -4,19 +4,22 @@ var Schema = mongoose.Schema;
 
 var NewsSchema = new Schema({
   // title of article from nytimes.com
-  upsert: {
-    type: Boolean
-  },
   title: {
-    type: String
+    type: String,
+    unique: true,
+    required: true
   },
   // publish date of article
   published: {
-    type: String
+    type: String,
+    required: true,
+    unique: true
   },
   // url link article on nytimes.com)
   url: {
-    type: String
+    type: String,
+    required: true,
+    unique: true
   }
 });
 
