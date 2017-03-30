@@ -21,35 +21,48 @@ var Query = React.createClass({
     },
 
     render: function() {
+        var styles = {
+          padding: '10px 0',
+
+        }
+
+
         return (
             <div>
+
                 <h3>Enter topic of interest, time interval, and submit to retrieve articles</h3>
-                {/* here goes the request form */}
+                <section style={styles}>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <h4 className="">
+                      <div>
+                        <h4 className="form-titles">
                             <strong>Topic</strong>
                         </h4>
                         <input value={this.state.topic} type="text" className="form-control" id="topic" onChange={this.handleChange} required/>
-
+                      </div>
+                      <div style={styles}>
                         <h4 className="">
                             <strong>Start Year</strong>
                         </h4>
                         <input value={this.state.startYear} type="text" className="form-control" id="startYear" onChange={this.handleChange} required/>
-
+                      </div>
+                      <div style={styles}>
                         <h4 className="">
                             <strong>End Year</strong>
                         </h4>
                         <input value={this.state.endYear} type="text" className="form-control" id="endYear" onChange={this.handleChange} required/>
-
+                      </div>
                     </div>
-
-                    <div className="pull-right">
-                        <button type="submit" className="btn btn-danger">
+                    <div>
+                    {/* <div className="pull-right"> */}
+                        <button style={{width: '100%'}} type="submit" className="btn btn-default">
                             <h4>Submit</h4>
                         </button>
                     </div>
+<br />
                 </form>
+
+              </section>
 
             </div>
         );

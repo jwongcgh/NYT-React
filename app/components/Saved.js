@@ -28,12 +28,17 @@ var Saved = React.createClass({
   displayArticles: function() {
     return this.state.savedArticles.arts.map( function(article, index) {
       return (
-        <li key={index}>
-             <p>{article.title}</p>
-             <a href={article.url} target="_blank">
+        <li className="list-group-item" style={{overflow: 'auto'}} key={index}>
+          <div className="col-sm-10" style={{textAlign: 'left'}}>
+             <p style={{fontSize: '1.5em'}}>{article.title}</p>
+             <p style={{}}>Published on: {article.published}</p>
+             {/* <p>article _id: {article._id}</p> */}
+           </div>
+           <div className="col-sm-2">
+             <a style={{float: 'right', marginBottom: '5px'}} href={article.url} target="_blank">
                <button className="btn btn-default ">View Article</button>
              </a>
-             <a href="#">
+             <a style={{float: 'right'}} href="#">
                {/* onClick will pass the current article as an argument to handleClick */}
                <button
                  className="btn btn-default"
@@ -42,8 +47,7 @@ var Saved = React.createClass({
                    e.preventDefault();
                    this.handleClick(article)}}>Delete</button>
              </a>
-             <p>Published on: {article.published}</p>
-             <p>article _id: {article._id}</p>
+             </div>
            </li>
            );
     }.bind(this));

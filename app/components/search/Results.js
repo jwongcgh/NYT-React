@@ -17,18 +17,22 @@ var Results = React.createClass({
     displayArticles: function() {
         return this.props.apiResults.arts.map(function(article, index) {
             return (
-                <li key={index}>
-                    <p>{article.headline.main}</p>
-                    <a href={article.web_url} target="_blank">
+                <li className="list-group-item" style={{overflow: 'auto'}} key={index}>
+                  <div className="col-sm-10" style={{textAlign: 'left'}}>
+                    <p style={{fontSize: '1.5em'}}>{article.headline.main}</p>
+                    <p style={{}}>Published on: {article.pub_date}</p>
+                  </div>
+                  <div className="col-sm-2">
+                    <a style={{float: 'right', marginBottom: '10px'}} href={article.web_url} target="_blank">
                         <button className="btn btn-default ">View Article</button>
                     </a>
-                    <a href={void(0)}>
+                    <a style={{float: 'right'}} href={void(0)}>
                         {/* onClick will request helper method to save the article in database */}
                         <button id={"#" + index} className="btn btn-default" onClick={function() {
                             helpers.saveThisArticle({article})
                         }}>Save</button>
                     </a>
-                    <p>Published on: {article.pub_date}</p>
+                  </div>
                 </li>
             );
         });
@@ -40,13 +44,14 @@ var Results = React.createClass({
             return (
                 <div>
                     <h3>No Articles to be Displayed</h3>
+                    <h4>Enter topic of interest, time interval, and submit to retrieve articles</h4>
                 </div>
             );
         }
 
         return (
             <div className="panel-body">
-                <ul className="list-group">
+                <ul className='list-group'>
                     {this.displayArticles()}
                 </ul>
             </div>
