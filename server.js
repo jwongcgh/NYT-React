@@ -24,17 +24,20 @@ app.use(express.static("./public"));
 // ==========
 
 // mongodb configuration
-mongoose.connect("mongodb://localhost/nytreact");
+// local configuration
+// mongoose.connect("mongodb://localhost/nytreact");
+// heroku deploy configuration
+mongoose.connect("mongodb://heroku_0dfd7drd:iu79ude1h6aog4od6sf1mej3jl@ds145800.mlab.com:45800/heroku_0dfd7drd")
 var db = mongoose.connection;
 
 // mongoose error logs
 db.on("error", function(error) {
-  console.log("Mongoose Error: ", error);
+    console.log("Mongoose Error: ", error);
 });
 
 // mongoose logged success message
 db.once("open", function() {
-  console.log("Mongoose connection sucessful");
+    console.log("Mongoose connection sucessful");
 });
 
 // ==========
@@ -42,49 +45,50 @@ db.once("open", function() {
 // routes
 // //save an article
 app.post('/api/save', function(req, res) {
-  let newArticle = new Article(req.body);
-  newArticle.save(function(error, doc) {
-    if (error) {
-      res.send(error);
-    } else {
-      res.send(doc);
-    }
-  });
+    let newArticle = new Article(req.body);
+    newArticle.save(function(error, doc) {
+        if (error) {
+            res.send(error);
+        } else {
+            res.send(doc);
+        }
+    });
 });
 
 // show all saved articles
 app.get('/api/saved', function(req, res) {
-  Article.find({}).exec(function(error, doc) {
-      if (error) {
-        console.log(error);
-        res.end();
-      } else {
-        console.log(doc);
-        res.send(doc);
-      }
+    Article.find({}).exec(function(error, doc) {
+        if (error) {
+            console.log(error);
+            res.end();
+        } else {
+            console.log(doc);
+            res.send(doc);
+        }
     });
 });
 
 // remove a saved article
 app.delete('/api/delete/:id', function(req, res) {
-  var query = {};
-  query._id = req.params.id;
+    var query = {};
+    query._id = req.params.id;
 
-  Article.findOneAndRemove(query).exec( function(error, doc) {
-    if (error) {
-      console.log(error);
-      res.end();
-    } else {
-      res.send(doc);
-    }
-  });
+    Article.findOneAndRemove(query).exec(function(error, doc) {
+        if (error) {
+            console.log(error);
+            res.end();
+        } else {
+            res.send(doc);
+        }
+    });
 });
+
 // ==========
 
 app.listen(PORT, function(err) {
-  if (err) {
-      console.error(err);
+    if (err) {
+        console.error(err);
     } else {
-      console.log('listening on: ' + PORT);
+        console.log('listening on: ' + PORT);
     }
 });

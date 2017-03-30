@@ -3,7 +3,7 @@ var React = require('react');
 var Query = React.createClass({
 
     getInitialState: function() {
-        return {topic: "eclipse", startYear: "2012", endYear: "2012"}
+        return {topic: "", startYear: "", endYear: ""}
     },
 
     // listens for changes in the form input
@@ -22,48 +22,50 @@ var Query = React.createClass({
 
     render: function() {
         var styles = {
-          padding: '10px 0',
-
+            padding: '10px 0'
         }
-
+        var inputStyles = {
+            textAlign: 'center',
+            fontSize: '1.5em'
+        }
 
         return (
             <div>
-
                 <h3>Enter topic of interest, time interval, and submit to retrieve articles</h3>
                 <section style={styles}>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                      <div>
-                        <h4 className="form-titles">
-                            <strong>Topic</strong>
-                        </h4>
-                        <input value={this.state.topic} type="text" className="form-control" id="topic" onChange={this.handleChange} required/>
-                      </div>
-                      <div style={styles}>
-                        <h4 className="">
-                            <strong>Start Year</strong>
-                        </h4>
-                        <input value={this.state.startYear} type="text" className="form-control" id="startYear" onChange={this.handleChange} required/>
-                      </div>
-                      <div style={styles}>
-                        <h4 className="">
-                            <strong>End Year</strong>
-                        </h4>
-                        <input value={this.state.endYear} type="text" className="form-control" id="endYear" onChange={this.handleChange} required/>
-                      </div>
-                    </div>
-                    <div>
-                    {/* <div className="pull-right"> */}
-                        <button style={{width: '100%'}} type="submit" className="btn btn-default">
-                            <h4>Submit</h4>
-                        </button>
-                    </div>
-<br />
-                </form>
-
-              </section>
-
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <div>
+                                <h3>
+                                    <strong>Topic</strong>
+                                </h3>
+                                <input style={inputStyles} value={this.state.topic} type="text" className="form-control" id="topic" onChange={this.handleChange} required/>
+                            </div>
+                            <div style={styles}>
+                                <h3>
+                                    <strong>Start Year</strong>
+                                </h3>
+                                <input style={inputStyles} value={this.state.startYear} type="text" className="form-control" id="startYear" onChange={this.handleChange} required/>
+                            </div>
+                            <div style={styles}>
+                                <h3>
+                                    <strong>End Year</strong>
+                                </h3>
+                                <input style={inputStyles} value={this.state.endYear} type="text" className="form-control" id="endYear" onChange={this.handleChange} required/>
+                            </div>
+                        </div>
+                        <div>
+                            <button style={{
+                                width: '90%',
+                                padding: '0',
+                                marginTop: '20px'
+                            }} type="submit" className="btn btn-default query">
+                                <h4><strong>Submit</strong></h4>
+                            </button>
+                        </div>
+                        <br/>
+                    </form>
+                </section>
             </div>
         );
     }

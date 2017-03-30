@@ -1,60 +1,75 @@
 * {
-  box-sizing: border-box;
-  }
-
-
-
-body {
-  margin: 0 auto;
-  padding: 0;
-  /*max-width: 1024px;*/
-  height: 100%;
-  font-family: "Cardona", "Garamond";
-  /*background-image: url();
-  background-repeat: no-repeat;
-  background-size: cover;*/
+    box-sizing: border-box;
 }
 
-/*.parallax {
-      background-image: url("../images/New_York_Times_building.jpg");
-      height: 100%;
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-  }*/
+body {
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    font-family: "Cardona", "Garamond";
+}
+
+.parallax {
+    background-image: url("../images/New_York_Times_building_d1.jpg");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: scroll;
+}
 
 #app div {
-  /*align-items: center;*/
-  text-align: center;
-max-width: 100%;
-margin: 0 auto;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .wrapper {
-  display: flex;
-  /*align-items: center;*/
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
-  flex: 1;
+    flex: 1;
 }
 
-#app div > .title {
-  margin-left: 0px;
-  margin-right: 5px;
-  border: 1px dotted red;
-  width: 200px;
-  background-color: gray;
+#app div>.title {
+    margin-top: 25px;
+    margin-left: 0px;
+    margin-right: 5px;
+    border: 1px dotted #64FFDC;
+    border-radius: 15px;
+    width: 225px;
+    color: green;
 }
 
-#app div > .props {
-  border: red 1px dotted;
-  margin: 0;
-  max-width: 75%;
+#app div>.props {
+    border: 1px dotted #3BDFFF;
+    border-radius: 15px;
+    margin: 0;
+    max-width: 75%;
+    margin-top: 25px;
 }
 
 li {
-  border: blue 1px dotted;
+    border: blue 1px dotted;
+}
+
+h1 {
+  font-size: 4.5em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h1, h2, h3 {
+    color: white;
+    text-shadow: 1px 1px red;
+}
+
+.query {
+    outline: none !important;
+    background-color: rgba(232, 228, 183, 0.6) !important;
 }
